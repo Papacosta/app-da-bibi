@@ -66,6 +66,23 @@ Enquanto o `config.js` estiver vazio, o site abre em **modo demonstração**, co
 
 ---
 
+## Lembrete diário por e-mail (15:15)
+
+Todo dia, às 15:15 (horário de Brasília), o GitHub confere no app se o dia de aula de hoje já tem registro. **Só se faltar** ele manda um e-mail para o seu Gmail, com um botão para abrir o app. Também avisa se algum dia de aula anterior ficou sem registro.
+
+Para ligar:
+1. **Supabase → SQL Editor:** cole [`supabase/lembrete.sql`](supabase/lembrete.sql) e clique em **Run**.
+2. **Senha de app do Google:** em <https://myaccount.google.com/apppasswords> (exige a verificação em duas etapas ligada), crie uma senha com o nome `App da Bibi` e copie as 16 letras.
+3. **Segredos no GitHub:** no repositório, vá em **Settings → Secrets and variables → Actions → New repository secret** e crie:
+   - `GMAIL_USER` → seu endereço do Gmail
+   - `GMAIL_APP_PASSWORD` → as 16 letras da senha de app
+   - `LEMBRETE_PARA` (opcional) → outro e-mail para receber o lembrete
+4. **Testar:** na aba **Actions → Lembrete diário → Run workflow**, deixe “Mandar um e-mail de teste” marcado e clique em **Run workflow**. Em ~1 minuto deve chegar o e-mail de teste.
+
+Os segredos ficam guardados no GitHub e não aparecem no código, então o seu e-mail não fica público. O GitHub pode atrasar o horário em alguns minutos.
+
+---
+
 ## As 10 heurísticas de Nielsen no app
 
 1. **Visibilidade do estado do sistema:** indicador “Salvo / Salvando… / Não salvo” no topo, botões mostram “Salvando…”, avisos confirmam cada ação, o dia de hoje fica destacado e há um aviso quando a internet cai.
