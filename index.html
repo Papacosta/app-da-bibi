@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>App da Bibi</title>
+  <meta name="description" content="Controle dos dias em que levei a Bibi para a aula, pagamentos e gastos com o carro.">
+  <meta name="theme-color" content="#6d4bd8">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <noscript>O App da Bibi precisa do JavaScript ativado.</noscript>
+
+  <!-- Tela de carregamento inicial -->
+  <div id="carregando" class="tela-central" role="status" aria-live="polite">
+    <div class="spinner" aria-hidden="true"></div>
+    <p>Abrindo o App da Bibi…</p>
+  </div>
+
+  <!-- Login -->
+  <main id="tela-login" class="tela-central" hidden>
+    <form id="form-login" class="cartao login" novalidate>
+      <img src="icon.svg" alt="" width="64" height="64">
+      <h1>App da Bibi</h1>
+      <p class="sutil">Entre com seu e-mail e senha.</p>
+      <div id="aviso-demo" class="aviso" hidden>
+        <strong>Modo demonstração.</strong> Os dados ficam só neste navegador.
+        Entre como <button type="button" class="link" data-demo="admin@demo">admin@demo</button>
+        ou <button type="button" class="link" data-demo="tia@demo">tia@demo</button> (qualquer senha).
+      </div>
+      <label>E-mail
+        <input id="login-email" type="email" autocomplete="username" required inputmode="email">
+      </label>
+      <label>Senha
+        <span class="campo-senha">
+          <input id="login-senha" type="password" autocomplete="current-password" required>
+          <button type="button" id="ver-senha" class="botao-icone" aria-label="Mostrar senha" title="Mostrar senha">👁</button>
+        </span>
+      </label>
+      <p id="erro-login" class="erro" role="alert" hidden></p>
+      <button type="submit" class="botao primario largo">Entrar</button>
+    </form>
+  </main>
+
+  <!-- App -->
+  <div id="app" hidden>
+    <header class="topo">
+      <div class="marca">
+        <img src="icon.svg" alt="" width="32" height="32">
+        <div>
+          <strong>App da Bibi</strong>
+          <span id="quem" class="sutil"></span>
+        </div>
+      </div>
+      <div class="topo-acoes">
+        <span id="sync" class="sync" role="status" aria-live="polite" title="Situação dos dados">● Salvo</span>
+        <button class="botao-icone" data-ir="ajuda" aria-label="Ajuda" title="Ajuda">?</button>
+        <button id="sair" class="botao fantasma">Sair</button>
+      </div>
+    </header>
+
+    <div id="faixa-demo" class="faixa-demo" hidden>
+      Modo demonstração — os dados são de exemplo e ficam só neste navegador.
+      <button class="link" id="reiniciar-demo">Recomeçar exemplo</button>
+    </div>
+
+    <nav class="abas" aria-label="Seções">
+      <button data-aba="dias" class="ativa"><span aria-hidden="true">📅</span>Dias</button>
+      <button data-aba="pagamentos"><span aria-hidden="true">💵</span>Pagamentos</button>
+      <button data-aba="gastos" data-admin><span aria-hidden="true">🔧</span>Gastos</button>
+      <button data-aba="resumo" data-admin><span aria-hidden="true">📊</span>Resumo</button>
+      <button data-aba="ajustes" data-admin><span aria-hidden="true">⚙️</span>Ajustes</button>
+    </nav>
+
+    <main id="conteudo" class="conteudo" tabindex="-1"></main>
+  </div>
+
+  <!-- Diálogo genérico -->
+  <dialog id="dialogo" aria-labelledby="dialogo-titulo">
+    <form method="dialog" id="dialogo-form" novalidate></form>
+  </dialog>
+
+  <!-- Avisos rápidos (com "Desfazer") -->
+  <div id="avisos" class="avisos" aria-live="polite"></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

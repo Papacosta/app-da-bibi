@@ -1,0 +1,10 @@
+{
+  "name": "App da Bibi",
+  "short_name": "App da Bibi",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f6f4fb",
+  "theme_color": "#6d4bd8",
+  "lang": "pt-BR",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}
