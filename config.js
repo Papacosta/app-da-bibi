@@ -5,5 +5,5 @@
 // regras de acesso criadas em supabase/schema.sql.
 //
 // Se deixar vazio, o app abre em MODO DEMONSTRAÇÃO (dados só no seu navegador).
-export const SUPABASE_URL = '';
-export const SUPABASE_ANON_KEY = '';
+export const SUPABASE_URL = 'https://krteikzktruivihlsdrl.supabase.co';
+export const SUPABASE_ANON_KEY = 'sb_publishable_hL-coBhpBDGPQPcha-fyaw_bcOMhC5_';

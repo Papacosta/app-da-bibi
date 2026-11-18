@@ -25,7 +25,7 @@ export function traduzirErro(e) {
 // Adaptador Supabase
 // =================================================================
 async function criarSupabase() {
-  const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/+esm');
+  const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.58.0/+esm');
   const sb = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
   const ok = (r) => { if (r.error) throw r.error; return r.data; };
 

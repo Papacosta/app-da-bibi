@@ -142,3 +142,16 @@ create policy gastos_admin on public.gastos for all
 drop policy if exists custos_admin on public.custos_dia;
 create policy custos_admin on public.custos_dia for all
   using (public.eh_admin()) with check (public.eh_admin());
+
+-- =============================================================
+-- Permissões da API: só usuários logados chegam às tabelas;
+-- as regras acima decidem o que cada um vê e altera.
+-- =============================================================
+grant usage on schema public to authenticated;
+grant select, insert, update, delete on
+  public.perfis, public.configuracoes, public.dias, public.custos_dia, public.pagamentos, public.gastos
+  to authenticated;
+grant execute on function public.meu_papel(), public.eh_admin(), public.pode_ver_dias() to authenticated;
+revoke all on
+  public.perfis, public.configuracoes, public.dias, public.custos_dia, public.pagamentos, public.gastos
+  from anon;
